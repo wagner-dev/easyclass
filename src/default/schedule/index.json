@@ -2,43 +2,37 @@
     "monday": [
         {
             "matter": "matemática",
-            "start": "7:32",
+            "start": "07:38",
             "end": "8:20",
             "link": "pte-mbrn-ofo"
         },
         {
             "matter": "Ed. Física",
-            "start": "9:22",
+            "start": "09:26",
             "end": "10:10",
             "link": "nhk-mqxp-guw"
         },
         {
             "matter": "Português",
-            "start": "10:12",
+            "start": "10:18",
             "end": "11:00",
             "link": "tdh-juhx-ffm"
         },
         {
             "matter": "Português",
-            "start": "13:05",
+            "start": "13:10",
             "end": "13:50",
             "link": "tdh-juhx-ffm"
         },
         {
             "matter": "Espanhol",
-            "start": "13:50",
+            "start": "14:00",
             "end": "14:40",
             "link": "pkx-trhc-uot"
         },
         {
-            "matter": "Matemática",
-            "start": "14:40",
-            "end": "15:30",
-            "link": "pte-mbrn-ofo"
-        },
-        {
             "matter": "Oficina de redação",
-            "start": "15:50",
+            "start": "16:00",
             "end": "16:40",
             "link": "pte-mbrn-ofo"
         }
@@ -46,13 +40,13 @@
     "tuesday": [
         {
             "matter": "Fisíca",
-            "start": "7:30",
+            "start": "07:30",
             "end": "8:20",
             "link": "qqw-wufp-fvw"
         },
         {
             "matter": "Design",
-            "start": "9:20",
+            "start": "09:20",
             "end": "10:10 ",
             "link": "sqd-zkqd-dnq"
         },
@@ -78,13 +72,13 @@
     "wednesday": [
         {
             "matter": "RC",
-            "start": "7:30",
+            "start": "07:30",
             "end": "8:20",
             "link": "sqd-zkqd-dnq"
         },
         {
             "matter": "RC",
-            "start": "8:20",
+            "start": "08:20",
             "end": "9:10",
             "link": "sqd-zkqd-dnq"
         },
@@ -96,45 +90,45 @@
         },
         {
             "matter": "GCBD",
-            "start": "13:00",
+            "start": "13:04",
             "end": "13:50",
-            "link": "tdh-juhx-ffm"
+            "link": "sqd-zkqd-dnq"
         },
         {
             "matter": "Inglés Técnico",
-            "start": "13:54",
-            "end": "14:40",
+            "start": "14:45",
+            "end": "15:30",
             "link": "tdh-juhx-ffm"
         }
     ],
     "thursday": [
         {
             "matter": "Matemática",
-            "start": "7:30",
+            "start": "07:35",
             "end": "8:20",
             "link": "pte-mbrn-ofo"
         },
         {
             "matter": "Programação Web 2",
-            "start": "9:20",
+            "start": "09:25",
             "end": "10:10 ",
             "link": "ohy-smap-uxb"
         },
         {
             "matter": "Mundo do trabalho",
-            "start": "13:00",
+            "start": "13:05",
             "end": "13:50",
             "link": "nhk-mqxp-guw"
         },
         {
             "matter": "Inglés",
-            "start": "13:50",
+            "start": "13:55",
             "end": "14:40",
             "link": "vjx-xgqf-mtg"
         },
         {
             "matter": "GCBD",
-            "start": "14:40",
+            "start": "14:45",
             "end": "15:30",
             "link": "sqd-zkqd-dnq"
         },
@@ -148,19 +142,19 @@
     "friday": [
         {
             "matter": "História",
-            "start": "7:30",
-            "end": "8:20",
+            "start": "07:35",
+            "end": "08:20",
             "link": "nts-jeoi-xvb"
         },
         {
             "matter": "Sociologia",
-            "start": "9:20",
+            "start": "09:25",
             "end": "10:10",
             "link": "owx-deam-wxu"
         },
         {
             "matter": "Filosófia",
-            "start": "10:10",
+            "start": "10:15",
             "end": "11:00",
             "link": "nts-jeoi-xvb"
         },
@@ -172,19 +166,19 @@
         },
         {
             "matter": "PV",
-            "start": "14:40",
+            "start": "14:45",
             "end": "15:10",
             "link": "vte-rfro-kni"
         },
         {
             "matter": "FC",
-            "start": "14:10",
-            "end": "15:30",
+            "start": "15:15",
+            "end": "15:40",
             "link": "owx-deam-wxu"
         },
         {
             "matter": "Geografia",
-            "start": "15:50",
+            "start": "15:55",
             "end": "16:40",
             "link": "dih-jpqk-duc"
         }
