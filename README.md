@@ -1,8 +1,9 @@
 # School📚📊
 
-## Introdução📖
+## Funcionalidades📖
 
-#### A School é um sistema de automação que entra sozinho em todas as aulas que você tiver no google meet - basta configurar. Além disso, o sistema verifica o chat se existe alguma palavra chave relacionada a chamada, caso existir: o som da página é desmultado e emite um som(bip) sinalizando que a chamada começou - útil para não ficar com falta.
+#### A School é um sistema de automação que entra "sozinho" em aulas onlines(salas) no google meet. Além disso, o sistema procura no chat palavras-chaves relacionadas a chamada, caso existir: o sistema emite um efeito sonoro(bip) sinalizando que a chamada começou - útil para não ficar com falta.
+
 #### Focado para o EAD
 
 ## tecnologias🚀
