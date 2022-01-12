@@ -1,19 +1,11 @@
-import { Config } from '../types/config/index'
-import config from '../schoolconfig'
+import { Config } from '../../../types/config/index'
 import { object, string, array } from 'yup'
-import StartSystem from './controller/StartSytem/index'
-import SetResponse from './services/SetResponse/index'
-
-
-const SetErrorResponse = (messages: string[]=["Ocorreu um erro"]) => (
-    messages.forEach((message) => SetResponse(message))
-)
 
 const ValidateConfig = async (config: Config) => {
     try{
         const AUTHORIZATION_CONFIG_SCHEMA = object({
             username: string().optional(),
-            mail: string().email("Email inválido"),
+            mail: string().email("Email inválido").required('Email não informado'),
             password: string().required("Senha não informada"),
         })
         const DAY_CONFIG_SCHEMA = object({
@@ -35,30 +27,17 @@ const ValidateConfig = async (config: Config) => {
         })
         const data = await configValidationSchema.validate(config)
         const dataSuccess = {
-            valid: true,
-            errors: [],
             data
         }
-        
         return dataSuccess
     }
     catch({ errors }){
         const dataError = {
-            valid: false,
             errors 
         }
-        
-        return dataError
+        throw dataError
     }
 }
 
-(async () => { // start
-    const validationResult = await ValidateConfig(config)
-    const configIsValid = validationResult.valid
 
-    if(configIsValid) StartSystem()
-    else {
-        const errorMessages = validationResult.errors
-        SetErrorResponse(errorMessages)
-    }
-})()
+export default ValidateConfig

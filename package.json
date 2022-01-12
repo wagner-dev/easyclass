@@ -5,7 +5,7 @@
   "author": "Wagner Leandro de Oliveira",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only ./source/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only ./source/app/index.ts"
   },
   "dependencies": {
     "date-fns": "^2.28.0",
