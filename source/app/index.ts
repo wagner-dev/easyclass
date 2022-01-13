@@ -1,10 +1,10 @@
 import config from '../../schoolconfig'
 import ValidateConfig from './ValidateConfig/index'
-import StartSystem from '../controller/StartSytem/index'
+import StartSystem from '../controller/StartSystem/index'
 import SetResponse from '../services/SetResponse/index'
 
 const SetErrorResponse = (messages: string[]=["Ocorreu um erro"]) => {
-    messages.forEach(message => SetResponse(message))
+    messages?.forEach(message => SetResponse(message))
 }
 
 (async () => { // start
@@ -13,7 +13,8 @@ const SetErrorResponse = (messages: string[]=["Ocorreu um erro"]) => {
         StartSystem()
 
     }
-    catch({ errors }){
+    catch(errorData){
+        const { errors } = errorData as { errors: string[] }
         SetErrorResponse(errors)
     }
 })()

@@ -1,11 +1,11 @@
 type DayName = "monday" | "tuesday" | "wednesday" | "thursday" | "friday"
-type DayConfig = {
+export type DayConfig = {
     matter: string,
     beginning: string,
     end: string,
     code: string
 }
-type Schedule = {
+export type Schedule = {
     [dayName in DayName | string]: DayConfig[]
 }
 
