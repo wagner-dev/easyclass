@@ -1,6 +1,7 @@
 import { format } from 'date-fns'
-import config from '../../../schoolconfig'
 import { Schedule } from '../../../types/config/index'
+import { Error } from '../../../types/error/index'
+import config from '../../../schoolconfig'
 import SetResponse from '../../services/SetResponse/index'
 import OpenClassOnPage from './OpenClassOnPage/index'
 
@@ -52,7 +53,7 @@ const HandleSystemStartup = () => {
         }
     }
     catch(error){
-        const { message } = error as { message: string }
+        const { message } = error as Error
         SetResponse(message)
     }
 }

@@ -1,5 +1,5 @@
 type DayName = "monday" | "tuesday" | "wednesday" | "thursday" | "friday"
-export type DayConfig = {
+export interface DayConfig {
     matter: string,
     beginning: string,
     end: string,
@@ -9,13 +9,13 @@ export type Schedule = {
     [dayName in DayName | string]: DayConfig[]
 }
 
-type Authorization = {
+interface Authorization {
     username?: string,
-    mail: string,
+    email: string,
     password: string
 }
 
-export type Config = {
+export interface Config {
     schedule: Schedule,
     authorization: Authorization
 }

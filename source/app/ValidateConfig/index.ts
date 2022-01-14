@@ -5,7 +5,7 @@ const ValidateConfig = async (config: Config) => {
     try{
         const AUTHORIZATION_CONFIG_SCHEMA = object({
             username: string().optional(),
-            mail: string().email("Email inválido").required('Email não informado'),
+            email: string().email("Email inválido").required('Email não informado'),
             password: string().required("Senha não informada"),
         })
         const DAY_CONFIG_SCHEMA = object({

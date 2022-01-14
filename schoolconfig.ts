@@ -3,7 +3,7 @@ import { Config  } from './types/config/index'
 const CONFIG: Config = {
     authorization: {
         "username": 'example',
-        "mail": 'example@gmail.com',
+        "email": 'example@gmail.com',
         "password": 'example',
     },
     schedule: {
@@ -41,7 +41,7 @@ const CONFIG: Config = {
         "thursday": [
             {
                 "matter": "Example",
-                "beginning": "00:00",
+                "beginning": "21:49",
                 "end": "0:00",
                 "code": "aaa-aaaa-aaa"
             }
