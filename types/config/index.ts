@@ -15,7 +15,16 @@ interface Authorization {
     password: string
 }
 
+interface FindWordInChat {
+    keyword: string[]
+}
+
+interface Preference {
+    find_word_in_chat: FindWordInChat 
+}
+
 export interface Config {
     schedule: Schedule,
-    authorization: Authorization
+    authorization: Authorization,
+    preference: Preference
 }

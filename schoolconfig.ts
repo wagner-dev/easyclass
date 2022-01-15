@@ -1,12 +1,20 @@
+import dotenv from 'dotenv'
 import { Config  } from './types/config/index'
 
+dotenv.config()
+
 const CONFIG: Config = {
-    authorization: {
+    "authorization": {
         "username": 'example',
-        "email": 'example@gmail.com',
-        "password": 'example',
+        "email": process.env.EMAIL_USER || '',
+        "password": process.env.PASSWORD_USER || '',
     },
-    schedule: {
+    "preference": {
+        "find_word_in_chat": {
+            "keyword": ["example2", "example2"] 
+        },
+    },
+    "schedule": {
         "monday": [
             {
                 "matter": "Example",
@@ -41,7 +49,7 @@ const CONFIG: Config = {
         "thursday": [
             {
                 "matter": "Example",
-                "beginning": "21:49",
+                "beginning": "00:00",
                 "end": "0:00",
                 "code": "aaa-aaaa-aaa"
             }
@@ -49,9 +57,9 @@ const CONFIG: Config = {
         "friday": [
             {
                 "matter": "Example",
-                "beginning": "00:00",
+                "beginning": "21:08",
                 "end": "0:00",
-                "code": "aaa-aaaa-aaa"
+                "code": "eim-cntn-qck"
             }
         ]
     }
