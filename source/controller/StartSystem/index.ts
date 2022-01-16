@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import { Schedule } from '../../../types/config/index'
 import { Error } from '../../../types/error/index'
-import config from '../../../schoolconfig'
+import config from '../../../autoclassconfig'
 import SetResponse from '../../services/SetResponse/index'
 import OpenClassOnPage from './OpenClassOnPage/index'
 
@@ -45,17 +45,12 @@ const CheckIfHaveClass = () => {
 const HandleSystemStartup = () => {
     try{
 
-        // const classIsFound = CheckIfHaveClass()
-        // if(classIsFound){
-            // const configClass = classIsFound
+        const classIsFound = CheckIfHaveClass()
+        if(classIsFound){
+            const configClass = classIsFound
 
-            OpenClassOnPage({
-                "matter": "Example",
-                "beginning": "21:08",
-                "end": "0:00",
-                "code": "nbm-npab-qby"
-            })
-        // }
+            OpenClassOnPage(configClass)
+        }
     }
     catch(error){
         const { message } = error as Error

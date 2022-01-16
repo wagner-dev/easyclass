@@ -3,7 +3,7 @@ import puppeteer from 'puppeteer-extra'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 import { Error } from '../../../../types/error/index'
 import { DayConfig } from '../../../../types/config/index'
-import config from '../../../../schoolconfig'
+import config from '../../../../autoclassconfig'
 import WaitLoad from '../../../services/WaitLoad/index'
 import SetResponse from '../../../services/SetResponse/index'
 import ClickButton from '../../../services/ClickButton/index'
@@ -99,8 +99,10 @@ const FindKeywordEverySecondAndWarn = async (page: Page) => {
             oscillator.connect(context.destination)
             oscillator.start()
 
-            console.log("ALERTA: foi encontrado uma palavra-chave(configuradas no arquivo autoclassconfig.ts) na última mensagem do bate-papo.")
-            alert("ALERTA: foi encontrado uma palavra-chave(configuradas no arquivo autoclassconfig.ts) na última mensagem do bate-papo.")
+            const ALERT_MESSAGE =  "ALERTA: foi encontrado uma palavra-chave(configuradas no arquivo autoclassconfig.ts) na última mensagem do bate-papo."
+            
+            console.log(ALERT_MESSAGE)
+            alert(ALERT_MESSAGE)
             
             return oscillator
         }
