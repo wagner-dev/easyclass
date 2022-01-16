@@ -45,12 +45,17 @@ const CheckIfHaveClass = () => {
 const HandleSystemStartup = () => {
     try{
 
-        const classIsFound = CheckIfHaveClass()
-        if(classIsFound){
-            const configClass = classIsFound
+        // const classIsFound = CheckIfHaveClass()
+        // if(classIsFound){
+            // const configClass = classIsFound
 
-            OpenClassOnPage(configClass)
-        }
+            OpenClassOnPage({
+                "matter": "Example",
+                "beginning": "21:08",
+                "end": "0:00",
+                "code": "nbm-npab-qby"
+            })
+        // }
     }
     catch(error){
         const { message } = error as Error

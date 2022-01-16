@@ -11,7 +11,7 @@ const CONFIG: Config = {
     },
     "preference": {
         "find_word_in_chat": {
-            "keyword": ["example2", "example2"] 
+            "keyword": ["example1", "example2"] 
         },
     },
     "schedule": {

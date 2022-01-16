@@ -30,27 +30,21 @@ const OpenLoginPageInBrowser = async (browser: Browser) => {
 
 const WriteEmail = async (email: string, page: Page) => {
     const FIELD_IDENTIFIER = "input[type=email]"
-    
     await page.type(FIELD_IDENTIFIER, email)
 }
 
 const WritePassword = async (password: string, page: Page) => {
     const FIELD_IDENTIFIER = "input[type=password]"
-    
     await page.type(FIELD_IDENTIFIER, password)
 }
 
-const ClickNextButton = async (page: Page) => {
-    const BUTTON_IDENTIFIER = ".VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.qIypjc.TrZEUc.lw1w4b"
-    await page.click(BUTTON_IDENTIFIER)
-}
 const EnterAccountOnPage = async (page: Page) => {
     const { authorization: { email, password} } = config
     await WriteEmail(email, page)
-    await ClickNextButton(page)
+    await ClickButton(page, { buttonIdentifier: ".VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.qIypjc.TrZEUc.lw1w4b" })
     await WaitLoad(page)
     await WritePassword(password, page)
-    await ClickNextButton(page)
+    await ClickButton(page, { buttonIdentifier: ".VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.qIypjc.TrZEUc.lw1w4b" })
     await WaitLoad(page)
 }
 
@@ -61,24 +55,91 @@ const RedirectToClassPage = async (page: Page, { code }: DayConfig) => {
     await WaitLoad(page)
 }
 
-const ClickEnterButton = async (page: Page) => {
-    const BUTTON_IDENTIFIER = '.uArJ5e.UQuaGc.Y5sE8d.uyXBBb.xKiqt'
-    await page.click(BUTTON_IDENTIFIER)
-}
-
 const EnterClass = async (page: Page) => {
-    await ClickEnterButton(page)
+    await ClickButton(page, { buttonIdentifier: '.uArJ5e.UQuaGc.Y5sE8d.uyXBBb.xKiqt'})
+
+    await WaitLoad(page)
 }
 
 const OpenChat = async (page: Page) => {
-    const BUTTON_IDENTIFIER = await page.$$('.VfPpkd-Bz112c-LgbsSe.yHy1rc.eT1oJ.JsuyRc.boDUxc')
-    console.log(BUTTON_IDENTIFIER)
-    // await ClickButton(page, BUTTON_IDENTIFIER)
+    await ClickButton(page, { buttonIdentifier: 'button.VfPpkd-Bz112c-LgbsSe.yHy1rc.eT1oJ.JsuyRc.boDUxc[data-tooltip-id=tt-c11]'})   
 }
 
-const FindWordInChatAndWarn = async (page: Page) => {
-    await OpenChat(page)
+const FindKeywordEverySecondAndWarn = async (page: Page) => {
+    const { preference: { find_word_in_chat: { keyword } } } = config
 
+    const clientCode = (keyword: string[]) => {
+        const ValidateChat = (chat: any) => {
+            const validChat = chat.length
+            if(validChat) return true
+            
+            throw { message: 'Nenhuma mensagem no chat' }
+        }
+        const FindLastMessageInChat = (messages: any) => {
+            const LAST_MESSAGE_POSITION = messages.length-1
+            const lastMessage = messages[LAST_MESSAGE_POSITION].innerText
+            
+            return lastMessage
+        }
+        
+        const CheckKeywordInMessage = (message: string | any) => {
+            const messageHasKeyword = keyword.includes(message)
+            if(messageHasKeyword) return true
+            
+            throw { message: 'Nenhuma palavra-chave na mensagem' }
+        }
+
+        const StopFindKeywordEverySecond = () => clearInterval(interval)
+
+        const Warn = () => {
+            let context = new AudioContext(),
+            oscillator = context.createOscillator()
+
+            oscillator.type = 'sine'
+            oscillator.connect(context.destination)
+            oscillator.start()
+
+            console.log("ALERTA: foi encontrado uma palavra-chave(configuradas no arquivo autoclassconfig.ts) na última mensagem do bate-papo.")
+            alert("ALERTA: foi encontrado uma palavra-chave(configuradas no arquivo autoclassconfig.ts) na última mensagem do bate-papo.")
+            
+            return oscillator
+        }
+
+        const StopWarn = (oscillator: any) => oscillator.stop()
+        
+        const HandleFindKeyword = () => {
+            try{
+                const messagesChat = document.querySelectorAll('.oIy2qc')
+    
+                ValidateChat(messagesChat)
+                const lastMessage = FindLastMessageInChat(messagesChat)
+                CheckKeywordInMessage(lastMessage)
+                StopFindKeywordEverySecond()
+                const warn = Warn()
+                StopWarn(warn)
+
+            }
+            catch(error){
+                return false
+            }
+        }
+        const FindKeywordEverySecond = () => {
+            HandleFindKeyword()
+            const TIME = 1000
+            const interval = setInterval(HandleFindKeyword, TIME)
+            
+            return interval
+        }
+        const interval = FindKeywordEverySecond()
+
+    }
+
+    await page.evaluate(clientCode, keyword)
+}   
+
+const FindKeywordInChatAndWarn = async (page: Page) => {
+    await OpenChat(page)
+    await FindKeywordEverySecondAndWarn(page)
 }
 
 const HandleOpenClassOnPage = async (configClass: DayConfig) => {
@@ -89,7 +150,7 @@ const HandleOpenClassOnPage = async (configClass: DayConfig) => {
         await EnterAccountOnPage(page)
         await RedirectToClassPage(page, configClass)
         await EnterClass(page)
-        await FindWordInChatAndWarn(page)
+        await FindKeywordInChatAndWarn(page)
     }
     catch(error){
         const { message } = error as Error
