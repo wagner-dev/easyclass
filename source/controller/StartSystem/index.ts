@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import { Schedule } from '../../../types/config/index'
 import { Error } from '../../../types/error/index'
-import config from '../../../autoclassconfig'
+import config from '../../../easyclassconfig'
 import SetResponse from '../../services/SetResponse/index'
 import OpenClassOnPage from './OpenClassOnPage/index'
 

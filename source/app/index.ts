@@ -1,4 +1,4 @@
-import config from '../../autoclassconfig'
+import config from '../../easyclassconfig'
 import ValidateConfig from './ValidateConfig/index'
 import StartSystem from '../controller/StartSystem/index'
 import SetResponse from '../services/SetResponse/index'
