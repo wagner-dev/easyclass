@@ -38,8 +38,11 @@ const WritePassword = async (password: string, page: Page) => {
     await page.type(FIELD_IDENTIFIER, password)
 }
 
-const EnterAccountOnPage = async (page: Page) => {
+const EnterAccountOnPageAndWarn = async (page: Page) => {
     const { authorization: { email, password} } = config
+
+    SetResponse("[Fazendo login no google]")
+
     await WriteEmail(email, page)
     await ClickButton(page, { buttonIdentifier: ".VfPpkd-LgbsSe.VfPpkd-LgbsSe-OWXEXe-k8QpJ.VfPpkd-LgbsSe-OWXEXe-dgl2Hf.nCP5yc.AjY5Oe.DuMIQc.qIypjc.TrZEUc.lw1w4b" })
     await WaitLoad(page)
@@ -49,15 +52,18 @@ const EnterAccountOnPage = async (page: Page) => {
 }
 
 
-const RedirectToClassPage = async (page: Page, { code }: DayConfig) => {
+const RedirectToClassPageAndWarn = async (page: Page, { code }: DayConfig) => {
+    SetResponse("[Redirecionando para link da aula]")
+    
     const CLASS_LINK = `https://meet.google.com/${ code }`
     await page.goto(CLASS_LINK)
     await WaitLoad(page)
 }
 
-const EnterClass = async (page: Page) => {
-    await ClickButton(page, { buttonIdentifier: '.uArJ5e.UQuaGc.Y5sE8d.uyXBBb.xKiqt'})
+const EnterClassAndWarn = async (page: Page) => {
+    SetResponse('[Entrando em aula]')
 
+    await ClickButton(page, { buttonIdentifier: '.uArJ5e.UQuaGc.Y5sE8d.uyXBBb.xKiqt'})
     await WaitLoad(page)
 }
 
@@ -140,6 +146,8 @@ const FindKeywordEverySecondAndWarn = async (page: Page) => {
 }   
 
 const FindKeywordInChatAndWarn = async (page: Page) => {
+    SetResponse('[Procurando palavras-chaves no bate-papo]')
+
     await OpenChat(page)
     await FindKeywordEverySecondAndWarn(page)
 }
@@ -149,9 +157,9 @@ const HandleOpenClassOnPage = async (configClass: DayConfig) => {
         const browser = await OpenBrowser()
         const page = await OpenLoginPageInBrowser(browser)
         await SetNavigationTimeout(page)
-        await EnterAccountOnPage(page)
-        await RedirectToClassPage(page, configClass)
-        await EnterClass(page)
+        await EnterAccountOnPageAndWarn(page)
+        await RedirectToClassPageAndWarn(page, configClass)
+        await EnterClassAndWarn(page)
         await FindKeywordInChatAndWarn(page)
     }
     catch(error){
