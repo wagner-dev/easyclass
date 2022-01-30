@@ -24,7 +24,6 @@ const OpenLoginPageInBrowser = async (browser: Browser) => {
     const page = await browser.newPage()
     const LOGIN_PAGE_LINK =  "https://accounts.google.com/signin/v2/identifier?continue=https://apps.google.com/meet/"
     await page.goto(LOGIN_PAGE_LINK)
-
     return page
 }
 
@@ -77,21 +76,22 @@ const FindKeywordEverySecondAndWarn = async (page: Page) => {
     const clientCode = (keyword: string[]) => {
         const ValidateChat = (chat: any) => {
             const validChat = chat.length
-            if(validChat) return true
-            
+            if(validChat) {
+                return true
+            }
             throw { message: 'Nenhuma mensagem no chat' }
         }
         const FindLastMessageInChat = (messages: any) => {
             const LAST_MESSAGE_POSITION = messages.length-1
             const lastMessage = messages[LAST_MESSAGE_POSITION].innerText
-            
             return lastMessage
         }
         
         const CheckKeywordInMessage = (message: string | any) => {
             const messageHasKeyword = keyword.includes(message)
-            if(messageHasKeyword) return true
-            
+            if(messageHasKeyword){
+                return true
+            }
             throw { message: 'Nenhuma palavra-chave na mensagem' }
         }
 
@@ -106,7 +106,7 @@ const FindKeywordEverySecondAndWarn = async (page: Page) => {
             oscillator.start()
 
             const ALERT_MESSAGE =  "ALERTA: foi encontrado uma palavra-chave(configuradas no arquivo autoclassconfig.ts) na última mensagem do bate-papo."
-            
+
             console.log(ALERT_MESSAGE)
             alert(ALERT_MESSAGE)
             
@@ -125,7 +125,6 @@ const FindKeywordEverySecondAndWarn = async (page: Page) => {
                 StopFindKeywordEverySecond()
                 const warn = Warn()
                 StopWarn(warn)
-
             }
             catch(error){
                 return false
@@ -135,7 +134,6 @@ const FindKeywordEverySecondAndWarn = async (page: Page) => {
             HandleFindKeyword()
             const TIME = 1000
             const interval = setInterval(HandleFindKeyword, TIME)
-            
             return interval
         }
         const interval = FindKeywordEverySecond()

@@ -11,10 +11,9 @@ const CheckTime = (DATE_NOW: Date, dayName: string, scredule: Schedule) => {
     const haveClassNow = scredule[dayName].find(classData => classData.beginning == FORMATTED_TIME)
     if(haveClassNow) {
         const classData = haveClassNow
-        
         return classData
     }
-    else throw "Não tem aula configurada para agora"
+    throw "Não tem aula configurada para agora"
 }
 
 const CheckDayName = (DATE_NOW: Date) => {
@@ -25,7 +24,7 @@ const CheckDayName = (DATE_NOW: Date) => {
     if(dayNameIsValid){
         return DAY_NAME
     }
-    else throw { message: "Só possui aulas de segunda à sexta. Hoje não tem aula" }
+    throw { message: "Só possui aulas de segunda à sexta. Hoje não tem aula" }
 }
 
 const CheckIfHaveClassAndWarn = () => {
@@ -38,7 +37,7 @@ const CheckIfHaveClassAndWarn = () => {
         
         const WARN_MESSAGE = `Aula disponível encontrada: ${classData.matter}. [Entrando em aula]`
         SetResponse(WARN_MESSAGE)
-        
+
         return classData
     }
     catch{
@@ -52,7 +51,6 @@ const HandleSystemStartup = () => {
         const classIsFound = CheckIfHaveClassAndWarn()
         if(classIsFound){
             const configClass = classIsFound
-            
             OpenClassOnPage(configClass)
         }
     }
@@ -62,7 +60,7 @@ const HandleSystemStartup = () => {
     }
 }
 
-const CheckAndBootEverySecond = () => {
+const CheckAndBootEveryMinute = () => {
     const SECOND = 1000 * 59 // 1 minute
     setInterval(HandleSystemStartup, SECOND)
 }
@@ -71,7 +69,7 @@ const StartAndWarn = () => {
     SetResponse("Iniciando")
     SetResponse("Procurando aulas disponíveis no seu horário(configuradas no arquivo easyclassconfig) para serem iniciadas. [verificando]")
     
-    CheckAndBootEverySecond()
+    CheckAndBootEveryMinute()
 }
 StartAndWarn()
 

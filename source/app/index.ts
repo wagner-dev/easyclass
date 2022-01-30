@@ -7,7 +7,7 @@ const SetErrorResponse = (messages: string[]=["Ocorreu um erro"]) => {
     messages?.forEach(message => SetResponse(message))
 }
 
-(async () => { // start
+(async () => {
     try{
         await ValidateConfig(config)
         StartSystem()

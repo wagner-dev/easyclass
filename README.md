@@ -28,11 +28,6 @@ no arquivo easyclassconfig.
         or
       yarn start
  ````
- 
-## Visualização
-video(youtube): https://www.youtube.com/watch?v=trbRzr1ly4c
-
-imagens(figma): https://www.figma.com/file/fjcUsGHROOAYEpgGdM4llR/Untitled?node-id=0%3A1
 
 ## Perguntas Frequentes
 
