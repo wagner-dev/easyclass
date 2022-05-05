@@ -1,4 +1,4 @@
-type DayName = "monday" | "tuesday" | "wednesday" | "thursday" | "friday"
+type DayName = 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday'
 export interface DayConfig {
     matter: string,
     beginning: string,
@@ -20,7 +20,7 @@ interface FindWordInChat {
 }
 
 interface Preference {
-    find_word_in_chat: FindWordInChat 
+    find_word_in_chat: FindWordInChat
 }
 
 export interface Config {
