@@ -11,11 +11,11 @@
 * #### Assim que você configurar seu horário no arquivo easyclassconfig, o sistema entrará em todas as suas aulas automaticamente.
 * * #### O sistema ler seu horário(verificando o dia e tempo de início de cada aula configurada) e a cada segundo verificará se existe aula disponível para ser inicialiazada, caso encontrar: o sistema entrará na aula de forma automática.
 * #### Procura por palavras-chaves(é possível customizar no arquivo easyclassconfig) em cada mensagem enviada no bate-papo e se encontrar: emite um som de notificação e lhe alertará com uma mensagem na tela.
-* * #### Se caso quiser ser alertado sobre o início da chamada, configure às palavras-chaves para palavras que são relacionadas à chamada. Ex: presente, chamada e etc.
+* * #### Se caso quiser ser alertado sobre o início da chamada, configure as palavras-chaves para palavras que são relacionadas à chamada. Ex: presente, chamada e etc.
 
 ## começando⚙️
 ````
-1.Instale às dependencias:
+1.Instale as dependencias:
       npm i 
         or
       yarn install
@@ -33,10 +33,10 @@ no arquivo easyclassconfig.
 
 #### Q: Estou com problemas com o error: "No node found for selector"
 * Verifique se todos dados do arquivo easyclassconfig estão preenchidos
-* Certifique-se de que você esteja em uma boa conexão com à internet. Existe um intervalo de tempo entre 2 ações(3000 milisegundos). Se à pagina tiver uma demora para responder, ultrapassando 3000 milisegundos, o sistema tentará executar a próxima ação e falhará, pois a página ultrapassou os 3000 milisegundos.
+* Certifique-se de que você esteja com uma boa conexão à internet. Existe um intervalo de tempo entre 2 ações(de 3000 milisegundos). Se a pagina tiver uma demora para responder, ultrapassando 3000 milisegundos, o sistema tentará executar a próxima ação e falhará devido ao atraso.
 
 #### Q: Onde configuro minhas credenciais de login, horário e palavras-chaves?
-* No diretório principal, procure pelo o arquivo `easyclassconfig` e abra. Nele, terá às variáveis para autenticação no google(email, password("senha")), schedule("horário") e keyword("palavra-chave"). Configure com seus dados.
+* No diretório principal, procure pelo o arquivo `easyclassconfig` e abra. Nele, você encontrará as variáveis para autenticação no google(email, password("senha")), schedule("horário") e keyword("palavra-chave"). Configure-as com seus dados.
 
 ## Suporte
 Entre em contato pelo endereço de e-mail `wagnerleandro.developer@gmail.com`.
